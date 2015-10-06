@@ -1,0 +1,4 @@
+Options +FollowSymlinks -Indexes -Multiviews
+RewriteEngine on
+
+RewriteRule ^([\w\d]{4})$ decoder.php?decode=$1 [L]
