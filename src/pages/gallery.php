@@ -14,6 +14,7 @@
     array_shift($images);
     array_shift($images);
     
-    echo(createThumbnailImage($path.$images[0]));
+    echo(createThumbnail($path, $images[0]));
+    echo '<img src="'.$path."thumbs/".$images[0].'">';
     
 ?>

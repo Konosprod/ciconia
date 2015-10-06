@@ -18,9 +18,10 @@
         return $hash;
     }
 	
-    function createThumbnail($path)
+    function createThumbnail($path, $img)
     {
-        
+        $query = "convert -resize 100x144 ".$path.$img." ".$path."thumbs/".$img;
+        exec($query, $string);
     }
     
 	function apiKeyExist($key)
