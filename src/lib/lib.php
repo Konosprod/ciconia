@@ -1,9 +1,10 @@
 <?php
-    include("config.php");
+    
+	require_once $_SERVER["DOCUMENT_ROOT"]."ciconia/config.php";
 
     function getConnexion()
     {
-        return new PDO('mysql:host='.__DBHOST__.';dbname='.__DBNAME__, __DBUSER__, __DBPASS_);
+        return new PDO('mysql:host='.__DBHOST__.';dbname='.__DBNAME__, __DBUSER__, __DBPASS__);
     }
     
     function getHash($pw, $user)
@@ -16,6 +17,31 @@
     
         return $hash;
     }
+	
+	function apiKeyExist($key)
+	{
+		$db = getConnexion();
+		
+		if($db)
+		{
+			$sql = "SELECT id FROM users where api_key = :api_key";
+			
+			$stmt = $db->prepare($sql);
+			
+			if($stmt->execute(array("api_key" => $key)))
+			{
+				return ($stmt->fetch(PDO::FETCH_ASSOC) != false);
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
     
     function getApiKey($pw, $user)
     {

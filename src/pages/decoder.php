@@ -1,6 +1,6 @@
 <?php
     
-    include(__ROOT__."/lib/lib.php");
+    require_once $_SERVER["DOCUMENT_ROOT"]."ciconia/lib/lib.php";
 
     try
     {
@@ -29,12 +29,13 @@
             {
                 $url = $row['url'];
                 
-                $filename = substr($url, 4);
-                $fp = fopen($url, 'rb');
+                $filename = $_SERVER["DOCUMENT_ROOT"]."/ciconia/".$url;
                 
-                header("Content-Type: ".getMimeType($url));
-                header("Content-Length: ".filesize($url));
-                header('Content-Disposition: inline; filename="'.$filename.'"');
+                $fp = fopen($filename, 'rb');
+              
+                header("Content-Type: ".getMimeType($filename));
+                header("Content-Length: ".filesize($filename));
+                header('Content-Disposition: inline; filename="'.basename($filename).'"');
                 
                 fpassthru($fp);
                 
