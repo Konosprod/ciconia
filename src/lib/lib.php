@@ -18,6 +18,11 @@
         return $hash;
     }
 	
+    function createThumbnail($path)
+    {
+        
+    }
+    
 	function apiKeyExist($key)
 	{
 		$db = getConnexion();
