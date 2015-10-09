@@ -1,6 +1,6 @@
 <?php
     
-	require_once $_SERVER["DOCUMENT_ROOT"]."ciconia/config.php";
+	require_once $_SERVER["DOCUMENT_ROOT"]."/ciconia/config.php";
 
     function getConnexion()
     {
@@ -67,6 +67,8 @@
                                      'VALUES (:url, :shorten)');
 
 		$stmt->execute(array('url' => $url, 'shorten' => $shorturl));
+		
+		return $shorturl;
     }
     
     function urlExist($db, $url)
@@ -88,6 +90,12 @@
         }   
     }
     
+    function cleanString($string)
+    {
+        $string = str_replace(' ', '-', $string);
+        return preg_replace('/[^A-Za-z0-9\-.]/', '_', $string);
+    }
+    
     function getMimeType($path)
     {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -97,4 +105,36 @@
         
         return $mime;
     }
+    
+    function createShortLink($url)
+    {
+        $shorturl = "";
+    	try
+	    {
+		    $db = getConnexion();
+	    }
+	    catch(PDOException $e)
+	    {
+		    echo($e);
+	    }
+	
+	    if($db)
+	    {
+	      	if(!urlExist($db, $url))
+	        {
+	            $shorturl = insertUrl($db, $url);
+	            return $_SERVER["SERVER_NAME"]."/".$shorturl;
+	        }
+	        else
+	        {
+	            return null;
+	        }
+	    }
+	    else
+	    {
+		    return null;
+	    }
+	    
+	    return null;
+	}
 ?>

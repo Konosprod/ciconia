@@ -1,6 +1,8 @@
 <?php
 
-    require_once $_SERVER["DOCUMENT_ROOT"]."ciconia/lib/lib.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/ciconia/lib/lib.php";
+
+    error_reporting(E_ALL);
     
     if(!isset($_SESSION))
     {

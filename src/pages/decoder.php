@@ -1,6 +1,6 @@
 <?php
     
-    require_once $_SERVER["DOCUMENT_ROOT"]."ciconia/lib/lib.php";
+    require_once $_SERVER["DOCUMENT_ROOT"]."/ciconia/lib/lib.php";
 
     try
     {
