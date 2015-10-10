@@ -17,7 +17,7 @@
 		            if(move_uploaded_file($_FILES["img"]["tmp_name"], $outpath.$filename))
                     {
                         createThumbnail($outpath, $filename);
-                        echo(createShortLink("img/".$_POST["k"]."/".$filename, $_POST['k']));
+                        echo(createShortLink("img/".$_POST["k"]."/".$filename));
                     }
                     else
                     {
