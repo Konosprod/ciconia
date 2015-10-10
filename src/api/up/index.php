@@ -1,13 +1,14 @@
 <?php 
 
-	require_once $_SERVER["DOCUMENT_ROOT"]."/ciconia/lib/lib.php";
+    $__ROOT__ = dirname(__FILE__)."../..";
+	require_once $__ROOT__."/lib/lib.php";
 
 	if(isset($_POST["k"]))
 	{
 	    if(apiKeyExist($_POST["k"]))
 		{
 		    $filename = cleanString(basename($_FILES["img"]["name"]));
-		    $outpath = $_SERVER["DOCUMENT_ROOT"]."/ciconia/img/".$_POST["k"]."/";
+		    $outpath = $__ROOT__."/img/".$_POST["k"]."/";
 		    
 		    if(!file_exists($outpath.$filename))
 		    {

@@ -1,6 +1,8 @@
 <?php
     
-    require_once $_SERVER["DOCUMENT_ROOT"]."/ciconia/lib/lib.php";
+    $__ROOT__ = dirname(__FILE__)."/..";
+    
+    require_once $__ROOT__."/lib/lib.php";
 
     try
     {
@@ -29,7 +31,7 @@
             {
                 $url = $row['url'];
                 
-                $filename = $_SERVER["DOCUMENT_ROOT"]."/ciconia/".$url;
+                $filename = __ROOT__.$url;
                 
                 $fp = fopen($filename, 'rb');
               

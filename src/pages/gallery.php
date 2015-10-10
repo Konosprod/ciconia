@@ -1,6 +1,8 @@
 <?php
+
+    $__ROOT__ = dirname(__FILE__)."/..";
     
-    require_once $_SERVER["DOCUMENT_ROOT"]."/ciconia/lib/lib.php";
+    require_once $__ROOT__."/lib/lib.php";
     
     if(!isset($_SESSION))
     {
@@ -8,7 +10,7 @@
         return;
     }
     
-    $path = $_SERVER["DOCUMENT_ROOT"]."/ciconia/img/".$_SESSION["api"]."/";
+    $path = $__ROOT__."/img/".$_SESSION["api"]."/";
     $images = scandir($path);
     
     array_shift($images);

@@ -2,6 +2,8 @@
     
     include("config.php");
     
+    $__ROOT__ = dirname(__FILE__);
+    
     if(!isset($_SESSION))
     {
         session_start();
@@ -14,13 +16,14 @@
 ?>
 <html>
     <?php
-        if($_SESSION['log'] == 0)
+    
+	    if($_SESSION['log'] == 0)
         {
-            include(__ROOT__."/includes/login.html");
+            include($__ROOT__."/includes/login.html");
 	    }
 	    else
 	    {
-	        include(__ROOT__."/pages/gallery.php");
+	        include($__ROOT__."/pages/gallery.php");
 	    }
 	?>
 </html>

@@ -1,6 +1,8 @@
 <?php
+
+    $__ROOT__ = dirname(__FILE__)."/..";
     
-	require_once $_SERVER["DOCUMENT_ROOT"]."/ciconia/config.php";
+    require_once $__ROOT__."/config.php";
 
     function getConnexion()
     {
