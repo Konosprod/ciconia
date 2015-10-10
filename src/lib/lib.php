@@ -89,7 +89,11 @@
             {
                 return false;
             }
-        }   
+        } 
+        else
+        {
+            return true;
+        }  
     }
     
     function cleanString($string)
@@ -138,5 +142,44 @@
 	    }
 	    
 	    return null;
+	}
+	
+	function getShortUrl($imgpath)
+	{
+	    try
+	    {
+	        $db = getConnexion();
+	        
+	        if($db)
+	        {
+                $stmt = $db->prepare('SELECT shorten FROM push WHERE url = :url');
+                
+                if($stmt->execute(array("url" => $imgpath)))
+                {
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    
+                    if($row)
+                    {
+                        return $row['shorten'];
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+                else
+                {
+                    return "";
+                }
+	        }
+	        else
+	        {
+	            return "";
+	        }
+	    }
+	    catch(PDOException $e)
+	    {
+	        echo($e);
+	    }  
 	}
 ?>

@@ -8,7 +8,7 @@
 	    if(apiKeyExist($_POST["k"]))
 		{
 		    $filename = cleanString(basename($_FILES["img"]["name"]));
-		    $outpath = $__ROOT__."/img/".$_POST["k"]."/";
+		    $outpath = $_SERVER["DOCUMENT_ROOT"]."/ciconia/img/".$_POST["k"]."/";
 		    
 		    if(!file_exists($outpath.$filename))
 		    {
@@ -17,7 +17,7 @@
 		            if(move_uploaded_file($_FILES["img"]["tmp_name"], $outpath.$filename))
                     {
                         createThumbnail($outpath, $filename);
-                        echo(createShortLink("img/".$_POST["k"]."/".$filename));
+                        echo(createShortLink("img/".$_POST["k"]."/".$filename, $_POST['k']));
                     }
                     else
                     {

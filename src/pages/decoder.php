@@ -31,7 +31,7 @@
             {
                 $url = $row['url'];
                 
-                $filename = __ROOT__.$url;
+                $filename = $__ROOT__."/".$url;
                 
                 $fp = fopen($filename, 'rb');
               

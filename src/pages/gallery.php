@@ -20,7 +20,8 @@
     {
         if($img != "thumbs")
         {
-            echo '<img src="img/'.$_SESSION["api"]."/thumbs/".$img.'"><br/>';
+            $short = getShortUrl('img/'.$_SESSION["api"]."/".$img);
+            echo('<a href="/'.$short.'"><img src="img/'.$_SESSION["api"]."/thumbs/".$img.'">'.'</a>');
         }
     }
 ?>
