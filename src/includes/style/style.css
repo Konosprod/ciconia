@@ -59,6 +59,22 @@
     border-radius: 20%;
 }
 
+.gallery {
+    margin-left:15px;
+}
+
+.sticky-pagination {
+    position: absolute;
+    bottom: 10px;
+    height: 30px;
+    margin-top: 15px;
+}
+
+.row {
+    margin:0;
+    padding:0;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

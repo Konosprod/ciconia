@@ -1,3 +1,17 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ciconia</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+        <li><a href="pages/login.php?logout=1"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <?php
 
     $__ROOT__ = dirname(__FILE__)."/..";
@@ -54,35 +68,43 @@
         echo($e);
     }
     
-    
+    echo('<div class="row">'); 
     foreach($result as $entry)
     {
         $base = basename($entry['url']);
         $dir = dirname($entry['url']);
-        echo('<a href="/'.$entry['shorten'].'"><img src="'.$dir."/thumbs/".$base.'">'.'</a><a href="pages/delete.php?d='.$entry['shorten'].'">Delete</a></br>');
+        echo('<div class="col-sm-2">');
+        echo('<div class="thumbnail" style="text-align:center"><a href="/'.$entry['shorten'].'"><img style="width:100px;height:100px" src="'.$entry["url"].'"></a><a href="pages/delete.php?d='.$entry['shorten'].'">Delete</a></div>');
+        echo('</div>');
     }
+    echo("</div>");
+    echo('<div class="row">');
+    echo('<div class="text-center">');
+    echo('<ul class="pagination sticky-pagination">');
     
     if($result && count($result) > 0)
     {
         if($number <= 1 && $pages <= 1)
         {
-            echo('prev | next');
+            echo('<li class="disabled"><a href="#">prev</a></li><li class="disabled"><a href="#">next</a></li>');
         }
         elseif($number <= 1)
         {
-            echo "<span>&laquo; prev</span> | <a href=\"?page=$next\">next &raquo;</a>";
+            echo('<li class="disabled"><a href="#">prev</a></li><li><a href=\"?page=$next\">next</a></li>');
         }
         elseif($number >= $pages)
         {
-            echo "<a href=\"?page=$prev\">&laquo; prev</a> | <span>next &raquo;</span>"; 
+            echo ('<li><a href=\"?page=$prev\">prev</a></li><li class="disabled"><a href="#">next</a></li>'); 
         }
         else
         {
-            echo "<a href=\"?page=$prev\">&laquo; prev</a> | <a href=\"?page=$next\">next &raquo;</a>";
+            echo ('<li><a href=\"?page=$prev\">prev</a></li><li><a href=\"?page=$next\">next</a></li>');
         }
     }
+    
+    echo("</ul>");
+    echo("</div>");
+    echo("</div>");
 ?>
-<br/>
-<a href="pages/login.php?logout=1">Logout</a>
 
 
