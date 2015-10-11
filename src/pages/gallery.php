@@ -21,7 +21,7 @@
         if($img != "thumbs")
         {
             $short = getShortUrl('img/'.$_SESSION["api"]."/".$img);
-            echo('<a href="/'.$short.'"><img src="img/'.$_SESSION["api"]."/thumbs/".$img.'">'.'</a>');
+            echo('<a href="/'.$short.'"><img src="img/'.$_SESSION["api"]."/thumbs/".$img.'">'.'</a><a href="pages/delete.php?d='.$short.'">Delete</a></br>');
         }
     }
 ?>

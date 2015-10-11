@@ -182,4 +182,82 @@
 	        echo($e);
 	    }  
 	}
+	
+    function endsWith($haystack, $needle)
+    {
+        $length = strlen($needle);
+        if ($length == 0) {
+            return true;
+        }
+
+        return (substr($haystack, -$length) === $needle);
+    }	
+	
+	function deleteImage($shorten)
+	{
+	    $__ROOT__ = dirname(__FILE__)."/..";
+	    $db = getConnexion();
+	    
+	    if($db)
+	    {
+	        $stmt = $db->prepare("SELECT url FROM push WHERE shorten = :shorten");
+	        
+	        if($stmt->execute(array("shorten" => $shorten)))
+	        {
+	            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+	            
+	            if($row)
+	            {
+	                $url = $row["url"];
+	                
+	                $stmt = $db->prepare("DELETE FROM push WHERE shorten = :shorten");
+	                
+	                if($stmt->execute(array("shorten" => $shorten)))
+	                {
+	                    $base = basename($url);
+	                    $dir = dirname($url);
+	                    if(!unlink($__ROOT__."/".$url) && !unlink($__ROOT__."/".$dir."/thumbs/".$base))
+	                    {
+	                        echo("Error");
+	                    }
+	                }
+	            }
+	        }
+	    }
+	}
+	
+	function isUrlOwned($shorten, $api_key)
+	{
+	    $db = getConnexion();
+	    
+	    if($db)
+	    {
+	        $stmt = $db->prepare("SELECT url FROM push WHERE shorten = :shorten");
+	        
+	        if($stmt->execute(array("shorten" => $shorten)))
+            {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    
+                if($row)
+                {
+                    if(endsWith(dirname($row["url"]), $api_key))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+	    }
+	    else
+	    {
+	        return false;
+	    }
+	}
 ?>
