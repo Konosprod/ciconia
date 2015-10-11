@@ -1,7 +1,16 @@
-<form id="login" action="pages/login.php" method="post">
-	<p>Login :</p>
-	<input id="user" name="user" size="45" type="text"/>
-	<p>Password :</p>
-	<input id="pass" name="pass" size="45" type="password"/>
-	<input id="Submit" name="Submit" value="Login" type="submit">
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <img class="profile-img" src="/includes/style/img/logo.png"
+                    alt="">
+                <form class="form-signin" action="pages/login.php" method="post">
+                <input name ="user" type="text" class="form-control" placeholder="Username" required autofocus>
+                <input name="pass" type="password" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

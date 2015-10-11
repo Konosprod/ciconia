@@ -59,7 +59,7 @@
     {
         $base = basename($entry['url']);
         $dir = dirname($entry['url']);
-        echo('<a href="/'.$entry['shorten'].'"><img src="'.$dir."/thumbs/".$base.'">'.'</a><a href="pages/delete.php?d='.$short.'">Delete</a></br>');
+        echo('<a href="/'.$entry['shorten'].'"><img src="'.$dir."/thumbs/".$base.'">'.'</a><a href="pages/delete.php?d='.$entry['shorten'].'">Delete</a></br>');
     }
     
     if($result && count($result) > 0)
