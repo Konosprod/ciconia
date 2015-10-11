@@ -60,15 +60,15 @@
         return strtoupper($api_key);
     }
     
-    function insertUrl($db, $url)
+    function insertUrl($db, $url, $api_key)
     {
 		$id = rand(10000,99999);
 		$shorturl = base_convert($id, 20, 36);
 
-		$stmt = $db->prepare('INSERT INTO push (url, shorten)'.
-                                     'VALUES (:url, :shorten)');
+		$stmt = $db->prepare('INSERT INTO push (url, shorten, api_key)'.
+                                     'VALUES (:url, :shorten, :api_key)');
 
-		$stmt->execute(array('url' => $url, 'shorten' => $shorturl));
+		$stmt->execute(array('url' => $url, 'shorten' => $shorturl, 'api_key' => $api_key));
 		
 		return $shorturl;
     }
@@ -112,7 +112,7 @@
         return $mime;
     }
     
-    function createShortLink($url)
+    function createShortLink($url, $api_key)
     {
         $shorturl = "";
     	try
@@ -128,7 +128,7 @@
 	    {
 	      	if(!urlExist($db, $url))
 	        {
-	            $shorturl = insertUrl($db, $url);
+	            $shorturl = insertUrl($db, $url, $api_key);
 	            return $_SERVER["SERVER_NAME"]."/".$shorturl;
 	        }
 	        else
@@ -232,22 +232,15 @@
 	    
 	    if($db)
 	    {
-	        $stmt = $db->prepare("SELECT url FROM push WHERE shorten = :shorten");
+	        $stmt = $db->prepare("SELECT url FROM push WHERE shorten = :shorten and api_key = :api_key");
 	        
-	        if($stmt->execute(array("shorten" => $shorten)))
+	        if($stmt->execute(array("shorten" => $shorten, "api_key" => $api_key)))
             {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     
                 if($row)
                 {
-                    if(endsWith(dirname($row["url"]), $api_key))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
                 else
                 {
