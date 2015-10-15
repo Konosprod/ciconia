@@ -65,7 +65,7 @@
 
 .sticky-pagination {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     height: 30px;
     margin-top: 15px;
 }
@@ -75,12 +75,36 @@
     padding:0;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%
-  height: 25px;
+.thumbnail{
+    width: 120px;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -30px;
+  /* Pad bottom by footer height */
+  padding: 0 0 30px;
+}
+
+#footer {
+  height: 30px;
   background-color: #f5f5f5;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.displayed {
+    visibility: visible;
+}
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
 }
 
 @media (max-width:768px){ .footer{position:absolute;width:100%;} }
@@ -89,7 +113,7 @@
 
 body {
      margin: 0;
-     background: url('/includes/style/img/background.png');
+     background: url('/ciconia/includes/style/img/background.png');
      background-size: 1440px 800px;
      background-repeat: repeat;
      display: compact;

@@ -1,5 +1,17 @@
 <?php
 
+    function deleteImg($shorten, $api_key)
+    {
+        if(isUrlOwned($shorten, $api_key))
+        {
+            deleteImage($shorten);
+        }
+        else
+        {
+            echo("Error");
+        } 
+    }
+
     $__ROOT__ = dirname(__FILE__)."/..";
     
     require_once $__ROOT__."/lib/lib.php";
@@ -9,7 +21,7 @@
         session_start();
     }
     
-    if(!isset($_GET["d"]))
+    if(!isset($_GET["d"]) && !isset($_GET["dm"]))
     {
         header("Location: ..");
         die();
@@ -19,15 +31,21 @@
     
     if($db)
     {
-        if(isUrlOwned($_GET["d"], $_SESSION["api"]))
+        if(isset($_GET["d"]))
         {
-            deleteImage($_GET["d"]);
-            header("Location: ..");
+            deleteImg($_GET["d"], $_SESSION["api"]);
         }
         else
         {
-            echo("Error");
+            $images = json_decode($_GET["dm"]);
+            
+            foreach($images as $img)
+            {
+                deleteImg($img, $_SESSION["api"]);
+            }
         }
+        
+        header("Location: ..");
+        die();
     }
-
 ?>

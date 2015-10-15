@@ -14,13 +14,16 @@
         $_SESSION['log'] = 0;
     }
 ?>
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link href="includes/style/style.css" rel="stylesheet">
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -30,23 +33,41 @@
 
     </head>
     <body>
-    <?php
-    
-	    if($_SESSION['log'] == 0)
-        {
-            include($__ROOT__."/includes/login.html");
-	    }
-	    else
-	    {
-	        include($__ROOT__."/pages/gallery.php");
-	    }
-	?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	
-	<footer class="footer">
-        <p class="text-muted credit">About : <a href="#">About</a></p>
-    </footer>
-
+        <div id="wrap">
+        <?php
+        
+	        if($_SESSION['log'] == 0)
+            {
+                include($__ROOT__."/includes/login.html");
+	        }
+	        else
+	        {
+	            include($__ROOT__."/pages/gallery.php");
+	        }
+	    ?>
+	    </div>
+	    <div id="footer">
+            <p class="text-muted credit">About : <a href="#">About</a></p>
+        </div>
     </body>
+    
+    <script>
+        
+        $("#selectm").click(function() {
+            $(":checkbox").each(function() {
+                $(this).css({"visibility":"visible"});
+            });
+        });
+            
+        $("#deletem").click(function () {
+                
+            var t = []
+            
+            $(":checkbox:checked").each(function() {
+                t.push($(this).val());
+            });
+                
+            window.location = "pages/delete.php?dm="+encodeURIComponent(JSON.stringify(t));
+        });
+    </script>
 </html>

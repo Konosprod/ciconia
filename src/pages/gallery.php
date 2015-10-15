@@ -5,6 +5,13 @@
     </div>
     <div>
       <ul class="nav navbar-nav navbar-right">
+        <li class="dopdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#" id="deletem">Delete Multiple</a></li>
+                <li><a href="#" id="selectm">Select Multiple</a></li>
+            </ul>
+        </li>
         <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
         <li><a href="pages/login.php?logout=1"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
@@ -73,8 +80,8 @@
     {
         $base = basename($entry['url']);
         $dir = dirname($entry['url']);
-        echo('<div class="col-sm-2">');
-        echo('<div class="thumbnail" style="text-align:center"><a href="/'.$entry['shorten'].'"><img style="width:100px;height:100px" src="'.$entry["url"].'"></a><a href="pages/delete.php?d='.$entry['shorten'].'">Delete</a></div>');
+        echo('<div class="col-xs-1 col-sm-1">');
+        echo('<div class="thumbnail" style="text-align:center"><a href="/'.$entry['shorten'].'"><img style="width:100px;height:100px" src="'.$entry["url"].'"></a><a href="pages/delete.php?d='.$entry['shorten'].'">Delete</a><input type="checkbox" style="visibility:hidden" name="todelete" value="'.$entry["shorten"].'"></div>');
         echo('</div>');
     }
     echo("</div>");

@@ -1,4 +1,6 @@
 <?php
+
+    define("__ROOT__", getcwd());
     define("__SITEKEY__","123456789");
     define("__DBNAME__","ciconia");
     define("__DBHOST__","localhost");
