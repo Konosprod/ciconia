@@ -8,8 +8,8 @@
         <li class="dopdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
             <ul class="dropdown-menu">
+                 <li><a href="#" id="selectm">Select Multiple</a></li>
                 <li><a href="#" id="deletem">Delete Multiple</a></li>
-                <li><a href="#" id="selectm">Select Multiple</a></li>
             </ul>
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
