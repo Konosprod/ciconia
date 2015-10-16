@@ -43,6 +43,11 @@
                         header("Location: ../");
                         die();
                     }
+                    else
+                    {
+                        echo("Error, wrong login or password !<br/>");
+                        echo('<a href="../">Return</a>');
+                    }
                 }
             }
             else
