@@ -129,7 +129,7 @@
 	      	if(!urlExist($db, $url))
 	        {
 	            $shorturl = insertUrl($db, $url, $api_key);
-	            return $_SERVER["SERVER_NAME"]."/".$shorturl;
+	            return __BASE_PATH__."/".$shorturl;
 	        }
 	        else
 	        {

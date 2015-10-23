@@ -7,4 +7,5 @@
     define("__DBUSER__","ciconia");
     define("__DBPASS__","1234");
     define("__MAX_SIZE__", 100000000);
+    define("__BASE_PATH__", 'http://push.konosprod.fr');
 ?>
