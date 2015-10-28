@@ -1,0 +1,28 @@
+server {
+	server_name push.example.fr;
+        root /var/www/push.example.fr;
+        access_log /var/log/nginx/push.example.fr.access.log;
+        error_log /var/log/nginx/push.example.fr.error.log;
+
+        index index.php;
+
+	location / {
+		
+		try_files $uri $uri/ /index.php?$args;
+        }
+
+	location ~ "^/([\w\d]{4})$" {
+		try_files $uri /pages/decoder.php?decode=$1;
+	}
+
+        location ~ \.php$ {
+                include fastcgi_params;
+                fastcgi_intercept_errors on;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+}
