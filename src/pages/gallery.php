@@ -32,7 +32,7 @@
     }
     
     $path = $__ROOT__."/img/".$_SESSION["api"]."/";
-    /*
+    
     try
     {
         $db = getConnexion();
@@ -111,7 +111,7 @@
     
     echo("</ul>");
     echo("</div>");
-    echo("</div>");*/
+    echo("</div>");
 ?>
 
 
