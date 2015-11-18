@@ -12,7 +12,7 @@
                 <li><a href="#" id="deletem">Delete Multiple</a></li>
             </ul>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+        <li><a href="pages/settings.php"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
         <li><a href="pages/login.php?logout=1"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
@@ -32,7 +32,7 @@
     }
     
     $path = $__ROOT__."/img/".$_SESSION["api"]."/";
-    
+    /*
     try
     {
         $db = getConnexion();
@@ -111,7 +111,7 @@
     
     echo("</ul>");
     echo("</div>");
-    echo("</div>");
+    echo("</div>");*/
 ?>
 
 
