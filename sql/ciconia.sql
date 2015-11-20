@@ -43,15 +43,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 `id` int(10) unsigned NOT NULL,
   `user` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `api_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `api_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  UNIQUE(user)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Contenu de la table `users`
---
-
-INSERT INTO `users` (`id`, `user`, `hash`, `api_key`) VALUES
-(1, 'sabeurre', 'f3db898d331fe686b08954318b689ae059d198bc376d3f63e9a89af208a0e7fd0260805d449c2ba40ea00603c4bcc893e199ae36c115155d47d8339609ad1924', '723C516B5EDD7B6872C0C5B8C68ED0A7');
 
 --
 -- Index pour les tables exportées
