@@ -1,24 +1,3 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Ciconia</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dopdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                 <li><a href="#" id="selectm">Select Multiple</a></li>
-                <li><a href="#" id="deletem">Delete Multiple</a></li>
-            </ul>
-        </li>
-        <li><a href="pages/settings.php"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-        <li><a href="pages/login.php?logout=1"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 <?php
 
     $__ROOT__ = dirname(__FILE__)."/..";
@@ -30,6 +9,8 @@
         session_start();
         return;
     }
+
+   include($__ROOT__."/includes/navbar.html");
     
     $path = $__ROOT__."/img/".$_SESSION["api"]."/";
     
@@ -81,7 +62,7 @@
         $base = basename($entry['url']);
         $dir = dirname($entry['url']);
         echo('<div class="col-xs-1 col-sm-1">');
-        echo('<div class="thumbnail" style="text-align:center"><a href="/'.$entry['shorten'].'"><img style="width:100px;height:100px" src="'.$entry["url"].'"></a><a href="pages/delete.php?d='.$entry['shorten'].'">Delete</a><input type="checkbox" style="visibility:hidden" name="todelete" value="'.$entry["shorten"].'"></div>');
+        echo('<div class="thumbnail" style="text-align:center"><a href="/'.$entry['shorten'].'"><img src="'.$dir.'/thumbs/'.$base.'"></a><a href="pages/delete.php?d='.$entry['shorten'].'">Delete</a><input type="checkbox" style="visibility:hidden" name="todelete" value="'.$entry["shorten"].'"></div>');
         echo('</div>');
     }
     echo("</div>");
