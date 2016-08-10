@@ -5,8 +5,6 @@ If you are concerned about your privacy, but you still want a service that allow
 ## Dependency
 
 * composer
-* twig
-* bootstrap
 
 ## Install
 
