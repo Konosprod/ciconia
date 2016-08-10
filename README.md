@@ -14,6 +14,14 @@ If you are concerned about your privacy, but you still want a service that allow
 * `cd CICONIA_DIRECTORY && composer install`
 * `cd install/ && ./install.php`
 
+### Add user
+
+To add an user, you just have to go into the script folder, and launch `adduser.php`.
+
+### Delete user
+
+To delete an user, you just have to go into the script folder, and launch `deleteuser.php`
+
 ### Gallery Template
 #### Creator
 
@@ -27,4 +35,8 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 #### Copyright and License
 
 Copyright 2013-2015 Iron Summit Media Strategies, LLC. Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-thumbnail-gallery/blob/gh-pages/LICENSE) license.
+
+### Known error/bugs
+
+* You might need to `chown` the `img/` directory after an user has been added.
 
