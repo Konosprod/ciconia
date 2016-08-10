@@ -1,0 +1,4 @@
+Options +FollowSymlinks -Indexes -Multiviews
+RewriteEngine on
+
+RewriteRule ^([\w\d]{4})$ /api/decode/index.php?decode=$1 [L]

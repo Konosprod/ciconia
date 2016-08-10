@@ -1,0 +1,74 @@
+	<div class="row">
+                {% for thumb in thumbs %}
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 thumb">
+                                <a class="thumbnail" href="{{ thumb.url }}">
+                                        <img class="img-responsive" src="{{ thumb.src }}">
+                                </a>
+                                <div class="text-center manage" style="display: none;margin-bottom:10px; margin-top:-15px;">
+                                        <input type="checkbox" value="{{ thumb.val }}">
+                                        <a class="delete-link" data-delete="{{ thumb.val }}" href="#">Delete</a>
+                                </div>
+                        </div>
+                {% endfor %}
+	</div>
+		<hr class="separator"/>
+
+		<div class="text-center">
+			<ul class="pagination">
+			{% if active == max and max == 1%}
+				<li class="active">
+					<a href="index.php?page=0>0</a>
+				</li>
+			{% elseif active - 1 >= 1 %}
+				<li>
+					<a href="index.php?page=0">0</a>
+				</li>
+				{% if active - 1 >= 2 %}
+					<li class="disabled">
+						<a href="#">...</a>
+					</li>
+				{% endif %}
+				<li>
+					<a href="index.php?page={{ active - 1 }}">{{ active - 1}}</a>
+				</li>
+				<li class="active">
+					<a href="index.php?page={{ active }}">{{ active }}</a>
+				</li>
+			{% else %}
+				{% if active == 0 %}
+					<li class="active">
+						<a href="index.php?page=0">0</a>
+					</li>
+				{% elseif active == 1 %}
+					<li>
+						<a href="index.php?page=0">0</a>
+					</li>
+					<li class="active">
+						<a href="index.php?page=1">1</a>
+					</li>
+				{% endif %}
+
+			{% endif %}
+			{% if max - active >= 2 %}
+				<li>
+					<a href="index.php?page={{ active + 1 }}">{{ active + 1 }}</a>
+				</li>
+				{% if max - active >= 3 %}
+					<li class="disabled">
+						<a href="#">...</a>
+					</li>
+				{% endif %}
+				<li>
+					<a href="index.php?page={{ max }}">{{ max }}</a>
+				</li>
+			{% else %}
+				{% if max - active == 1 %}
+					<li>
+						<a href="index.php?page={{ max }}">{{ max }}</a>
+					</li>
+				{% endif %}
+			{% endif %}
+			</ul>
+		</div>
+
+
